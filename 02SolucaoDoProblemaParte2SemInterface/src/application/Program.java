@@ -74,7 +74,7 @@ public class Program {
 	}
 
 	private static void dislayMessageDateTimeParseException() {
-		System.out.println("-> erro: formato inválido para data e hora");
+		System.out.print("-> erro: formato inválido para data e hora\n");
 	}
 
 	private static void dislayMessageEndProgram() {
