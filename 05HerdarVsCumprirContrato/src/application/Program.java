@@ -2,20 +2,20 @@
 package application;
 
 /*--------------------imports section--------------------*/
+import model.entities.AbstractShape;
 import model.entities.Circle;
 import model.entities.Rectangle;
-import model.entities.Shape;
 import model.enums.Color;
 
 /*--------------------Program class--------------------*/
 public class Program {
 
 	/*--------------------functions section--------------------*/
-	private static Shape generateInstanceCircle(Color color, Double radius) {
+	private static AbstractShape generateInstanceCircle(Color color, Double radius) {
 		return new Circle(color, radius);
 	}
 	
-	private static Shape generateInstanceRectangle(Color color, Double width, Double height) {
+	private static AbstractShape generateInstanceRectangle(Color color, Double width, Double height) {
 		return new Rectangle(color, width, height);
 	}
 	
@@ -27,8 +27,8 @@ public class Program {
 		double width_shape_2 = 3.0;
 		double height_shape_2 = 4.0;
 
-		Shape shape_1 = generateInstanceCircle(color_shape_1, radius_shape_1);
-		Shape shape_2 = generateInstanceRectangle(color_shape_2, width_shape_2, height_shape_2);
+		AbstractShape shape_1 = generateInstanceCircle(color_shape_1, radius_shape_1);
+		AbstractShape shape_2 = generateInstanceRectangle(color_shape_2, width_shape_2, height_shape_2);
 		
 		System.out.println();
 		System.out.printf("Cor do círculo ......: %s%n", shape_1.getColor());

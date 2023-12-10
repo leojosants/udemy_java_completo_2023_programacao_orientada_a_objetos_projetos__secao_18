@@ -5,7 +5,7 @@ package model.entities;
 import model.enums.Color;
 
 /*--------------------Circle class--------------------*/
-public class Circle extends Shape {
+public class Circle extends AbstractShape {
 
 	/*--------------------attributes section--------------------*/
 	private Double radius;
@@ -28,8 +28,10 @@ public class Circle extends Shape {
 	/*--------------------methods section--------------------*/
 	@Override
 	public double area() {
+		double area = 0.0;
 		double pi = Math.PI;
 		double radius_exponentiation = Math.pow(this.getRadius(), 2);
-		return pi * radius_exponentiation;
+		area = pi * radius_exponentiation;
+		return area;
 	}
 }

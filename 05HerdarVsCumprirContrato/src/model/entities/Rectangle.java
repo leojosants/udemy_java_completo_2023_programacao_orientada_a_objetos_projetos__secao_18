@@ -5,7 +5,7 @@ package model.entities;
 import model.enums.Color;
 
 /*--------------------Rectangle class--------------------*/
-public class Rectangle extends Shape {
+public class Rectangle extends AbstractShape {
 
 	/*--------------------attributes section--------------------*/
 	private Double width;
@@ -38,7 +38,8 @@ public class Rectangle extends Shape {
 	/*--------------------methods section--------------------*/
 	@Override
 	public double area() {
-		// TODO Auto-generated method stub
-		return 0;
+		double area = 0.0;
+		area = this.getWidth() * this.getHeight();
+		return area;
 	}
 }
