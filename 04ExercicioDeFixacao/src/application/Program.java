@@ -11,6 +11,7 @@ import java.util.Scanner;
 import entities.Contract;
 import entities.Installment;
 import services.ContractService;
+import services.PaypalService;
 
 /*-------------------- Program class --------------------*/
 public class Program {
@@ -38,12 +39,16 @@ public class Program {
 		return contract_date;
 	}
 	
-	private static ContractService generateInstanceContractService() {
-		return new ContractService(null);
+	private static ContractService generateInstanceContractService(PaypalService paypal_service) {
+		return new ContractService(paypal_service);
 	}
-	
+		
 	private static Contract generateInstanceContract(int number, LocalDate date, double total_value) {
 		return new Contract(number, date, total_value);
+	}
+	
+	private static PaypalService generateInstancePaypalService() {
+		return new PaypalService();
 	}
 	
 	private static int requestContractNumber(Scanner scanner) {
@@ -103,6 +108,10 @@ public class Program {
 		System.out.println("-> erro: entrada inválida");;
 	}
 	
+	private static void dislayMessageNullPointerException() {
+		System.out.println("-> erro: valores nulos");
+	}
+	
 	private static void dislayMessageException(Throwable e) {
 		System.out.println(e);
 	}
@@ -132,7 +141,8 @@ public class Program {
 			System.out.print("Número de parcelas ..: ");
 			int number_of_installments = requestNumberOfInstallments(scanner);
 			
-			ContractService contract_service = generateInstanceContractService();
+			PaypalService paypal_service = generateInstancePaypalService();
+			ContractService contract_service = generateInstanceContractService(paypal_service);
 			contract_service.processContract(contract, number_of_installments);
 			
 			System.out.println("\nParcelas");
@@ -143,6 +153,9 @@ public class Program {
 		} 
 		catch (InputMismatchException e) {
 			dislayMessageInputMismatchException();
+		} 
+		catch (NullPointerException e) {
+			dislayMessageNullPointerException();
 		} 
 		catch (Exception e) {
 			dislayMessageException(e);
